@@ -17,14 +17,21 @@ For the parallel speed-up S, please note that:
 
 No. Machines:   Total No. Processes:     Mean time (average of 3 runs) in seconds:        Parallel speed-up, S:
 =============   ====================     =========================================        =====================
-1                       1                                                                      1                      
-1                       2                                                                      1.29       
-1                       4                                                                      1.49                                      
-1                       8                                                                      1.30                    
-2                       16                                                                                                                       
-2                       32                                                                                                            
+1                       1                                  0.0901                                 1                 
+1                       2                                  0.0581                                 1.55            
+1                       4                                  0.0450                                 2.01                                 
+1                       8                                  0.0403                                 2.24                
+2                       16                                 1.19                                   0.09                                              
+2                       32                                 1.20                                   0.0752                                     
 
-Please state the number of cores per machine (for Bragg 2.05, this is typically 12):
+Please state the number of cores per machine (for Bragg 2.05, this is typically 12): 12
 
 A brief interpretation of your results:
+
+Observation from the result indicates that there is good scaling on the single machine from 1 to 2.24 in parallel speed-up. However, there was a decreasing percentage
+increase in terms of parallel speed-up. As the number of machines increased to 2, the time taken to run increased and there is a less
+than 1 parallel speed up. I interpreted this as the overhead of communication and network latency dominating over computation.
+Another interpretation is that as the machine has 12 physical cores, the use of oversubscribing causes more overhead in terms of
+the context switching required to upkeep concurrency.
+
 
